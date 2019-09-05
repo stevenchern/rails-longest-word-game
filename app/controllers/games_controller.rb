@@ -21,7 +21,7 @@ class GamesController < ApplicationController
     time_elasped = Time.now - Time.new(year, month, day, hour, minute, second)
     not_repeat = check_attempt(attempt_letters, letters)
     if (attempt_letters - letters).any? || (not_repeat == false)
-      @score = 'Not in the grid. Score: 0'
+      @score = "Not in the grid. \n Score: 0"
     else
       url = "https://wagon-dictionary.herokuapp.com/#{word}"
       word_serialized = open(url).read
@@ -30,7 +30,7 @@ class GamesController < ApplicationController
       if parseword['found'] == true
         @score = "Your score is #{time}"
       else
-        @score = 'Your word is not a english word. Score: 0'
+        @score = "Your word is not a english word. \n Score: 0"
       end
     end
   end
